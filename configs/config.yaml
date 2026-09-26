@@ -1,0 +1,25 @@
+random_state: 42
+retrieval:
+  lexical_top_k: 250
+  vector_top_k: 250
+  pre_rank_k: 350
+  full_score_budget: 700
+embeddings:
+  model_name: intfloat/e5-small-v2
+  enabled: true
+  use_fp16: true
+  pca_enabled: false
+models:
+  candidates:
+    - LogisticRegression
+    - RandomForest
+    - LightGBM
+    - XGBoost
+decision:
+  target_auto_precision: 0.995
+  high_threshold: 0.90
+  low_threshold: 0.60
+negative_sampling:
+  hard: 0.70
+  random: 0.20
+  shortcut: 0.10

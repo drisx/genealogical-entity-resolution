@@ -1,0 +1,13 @@
+pandas
+numpy
+scikit-learn
+sentence-transformers
+rapidfuzz
+lightgbm
+xgboost
+faiss-cpu
+pyarrow
+joblib
+psutil
+matplotlib
+jupyter

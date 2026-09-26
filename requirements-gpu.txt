@@ -1,0 +1,3 @@
+-r requirements.txt
+cupy-cuda12x
+# RAPIDS/cuML installation is environment-specific; see docs/methodology.md
