@@ -108,7 +108,7 @@ The pipeline computes:
 - Human-review load
 - Distractor false-auto-match rate
 
-The uploaded notebook did not include a complete persisted results table for a final full-corpus run, so this repository deliberately does **not** publish invented performance numbers. Run the notebook to generate the metrics for a documented experiment.
+Saved outputs from the v5.5 optimized run are published under [`results/metrics/v5_5_optimized_run/`](results/metrics/v5_5_optimized_run/). They include the four-model train/validation comparison and aggregate group and single-feature ablation tables. LightGBM was selected by the validation-only policy in that run, but its recorded backend was a CPU fallback; XGBoost used CUDA. These are outputs from one saved execution, not independently reproduced or full-corpus results. See the [ablation study](docs/ablation-study.md) and [run notes](results/metrics/v5_5_optimized_run/README.md). Record-level query/candidate tables and fitted model/index binaries are excluded, and cached candidate-level notebook displays were cleared from the public copy.
 
 ## Repository structure
 
@@ -116,6 +116,7 @@ The uploaded notebook did not include a complete persisted results table for a f
 .
 ├── README.md
 ├── LICENSE
+├── .gitignore
 ├── requirements.txt
 ├── requirements-gpu.txt
 ├── environment.yml
@@ -125,12 +126,21 @@ The uploaded notebook did not include a complete persisted results table for a f
 ├── docs/
 │   ├── architecture.md
 │   ├── methodology.md
-│   └── limitations.md
+│   ├── limitations.md
+│   └── ablation-study.md
 ├── data/README.md
 ├── models/README.md
 ├── results/
 │   ├── figures/
-│   └── metrics/README.md
+│   └── metrics/
+│       ├── README.md
+│       └── v5_5_optimized_run/
+│           ├── README.md
+│           ├── model_comparison.csv
+│           ├── feature_group_missingness_ablation.csv
+│           ├── individual_feature_occlusion.csv
+│           ├── gpu_runtime.json
+│           └── deployment_gates.json
 ├── demo/example_queries.py
 ├── tests/test_config.py
 └── .github/workflows/tests.yml
@@ -147,11 +157,11 @@ python -m venv .venv
 pip install -r requirements.txt
 ```
 
-Then open `notebooks/genealogical_entity_resolution_pipeline.ipynb` and set the data path appropriate for your environment.
+Then open `notebooks/genealogical_entity_resolution_pipeline.ipynb`. Set `ENTITY_DATA_PATH` to your private dataset file; it defaults to `data/private/people.csv`. Set `ENTITY_OUTPUT_DIR` if needed; generated models and intermediate outputs default to `artifacts/gpu_pipeline_v5_5_optimized/`. Both locations are ignored by Git.
 
 ### GPU execution
 
-The notebook detects CUDA availability and supports GPU-backed embeddings plus optional RAPIDS acceleration. GPU-capable LightGBM/XGBoost configurations include CPU fallbacks when the installed binary/runtime does not support CUDA.
+The notebook detects CUDA availability and supports GPU-backed embeddings plus optional RAPIDS acceleration. GPU-capable LightGBM/XGBoost configurations include CPU fallbacks when the installed binary/runtime does not support CUDA. In the saved v5.5 run, LightGBM was selected but used a CPU fallback; XGBoost used CUDA.
 
 For environment-specific GPU setup, see [methodology.md](docs/methodology.md).
 
@@ -178,3 +188,4 @@ See [limitations.md](docs/limitations.md).
 **Lukman Idris** — Data Scientist | Machine Learning | AI | NLP
 
 [LinkedIn](https://www.linkedin.com/in/lukman-idris-160ba8141/) · [GitHub](https://github.com/drisx)
+
