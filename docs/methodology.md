@@ -28,6 +28,10 @@ The notebook trains and compares Logistic Regression, Random Forest, LightGBM, a
 
 The final query layer applies calibrated scores, penalties, an ambiguity margin, and a three-way policy: automatic match, human review/abstain, or no match.
 
+## Feature ablation
+
+The review notebook measures group-level test-time missingness and single-feature occlusion on the identity-disjoint test split. Its decision threshold is selected on validation and held fixed for these comparisons. The saved execution did not enable optional drop-group retraining; see [`ablation-study.md`](ablation-study.md) for findings and the published aggregate tables.
+
 ## Production considerations
 
-The notebook also defines review-queue schemas, benchmark correction overlays, monitoring references, deployment gates, and conservative cluster-attachment/reconciliation policies. These are engineering scaffolds rather than a claim of production deployment.
+The notebook also defines review-queue schemas, benchmark correction overlays, monitoring references, deployment gates, and conservative cluster-attachment/reconciliation policies. These are engineering scaffolds rather than a claim of production deployment. The saved run reports a GPU runtime, but the selected LightGBM model used a CPU fallback; see the [run notes](../results/metrics/v5_5_optimized_run/README.md).
