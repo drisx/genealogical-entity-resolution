@@ -1,0 +1,20 @@
+# Local environments and credentials
+.venv/
+.env
+.env.*
+!.env.example
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+
+# Private input data and generated model artifacts
+/data/raw/
+/data/private/
+/data/interim/
+/data/*.csv
+/data/**/*.csv
+/artifacts/
+*.joblib
+*.parquet
+*.pkl
+*.pickle
