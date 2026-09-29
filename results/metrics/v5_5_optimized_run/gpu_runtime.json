@@ -1,0 +1,17 @@
+{
+  "pipeline_version": "v5.5-gpu-optimized",
+  "use_gpu": true,
+  "device": "cuda:0",
+  "gpu_name": "Tesla T4",
+  "gpu_vram_gb": 14.56317138671875,
+  "cuml_accel_active": true,
+  "cupy_available": true,
+  "faiss_gpu_available": false,
+  "embedding_batch_size_initial": 512,
+  "model_backend_reports": {
+    "LogisticRegression": "RAPIDS proxy (GPU when supported; CPU fallback allowed)",
+    "RandomForest": "RAPIDS proxy (GPU when supported; CPU fallback allowed)",
+    "LightGBM": "LightGBM CPU fallback",
+    "XGBoost": "XGBoost CUDA"
+  }
+}
